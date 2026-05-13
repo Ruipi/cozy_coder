@@ -1,0 +1,14 @@
+[project]
+name = "cozy_coder"
+version = "0.1.0"
+description = "Cute and cozy desktop app to help you think"
+requires-python = ">=3.11"
+
+dependencies = [
+    "pyside6",
+    "pillow",
+    "pydantic",
+]
+
+[tool.ruff]
+line-length = 88
