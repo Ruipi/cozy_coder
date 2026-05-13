@@ -1,13 +1,15 @@
 from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
-    QLabel,
+    QStackedWidget,
 )
 
-from cozy_coder.ui.widgets.animated_button import AnimatedButton
+from cozy_coder.ui.pages.home_page import HomePage
+from cozy_coder.ui.pages.brain_dump_page import BrainDumpPage
 
 
 class MainWindow(QWidget):
+
     def __init__(self):
         super().__init__()
 
@@ -15,27 +17,26 @@ class MainWindow(QWidget):
         self.resize(900, 700)
 
         layout = QVBoxLayout(self)
-        layout.setSpacing(20)
-        layout.setContentsMargins(80, 60, 80, 60)
 
-        title = QLabel("cozy coder ✨")
-        title.setStyleSheet("""
-            font-size: 38px;
-            font-family: "Quicksand";
-            font-weight: bold;
-        """)
+        self.stack = QStackedWidget()
 
-        layout.addWidget(title)
+        layout.addWidget(self.stack)
 
-        buttons = [
-            "Start Focus Session",
-            "Brain Dump",
-            "Tiny Tasks",
-            "Notes",
-            "Settings"
-        ]
+        # Pages
+        self.home_page = HomePage()
+        self.brain_dump_page = BrainDumpPage()
 
-        for text in buttons:
-            layout.addWidget(AnimatedButton(text))
+        self.stack.addWidget(self.home_page)
+        self.stack.addWidget(self.brain_dump_page)
 
-        layout.addStretch()
+        # Connections
+        self.home_page.brain_dump_button.clicked.connect(
+            lambda: self.switch_page(self.brain_dump_page)
+        )
+
+        self.brain_dump_page.back_button.clicked.connect(
+            lambda: self.switch_page(self.home_page)
+        )
+
+    def switch_page(self, page):
+        self.stack.setCurrentWidget(page)

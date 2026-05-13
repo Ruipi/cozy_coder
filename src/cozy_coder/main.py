@@ -1,4 +1,8 @@
+import os
 import sys
+
+os.environ["QT_ENABLE_HIGHDPI_SCALING"] = "1"
+os.environ["QT_API"] = "pyside6"
 
 from PySide6.QtWidgets import QApplication
 
