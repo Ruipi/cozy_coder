@@ -1,7 +1,7 @@
 from cozy_coder.ui.pages.base_page import BasePage
 
 
-class TasksPage(BasePage):
+class FocusPage(BasePage):
 
     def __init__(self):
-        super().__init__("Tasks Page")
+        super().__init__("Focus Time")

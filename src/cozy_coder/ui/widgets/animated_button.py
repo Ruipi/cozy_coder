@@ -2,7 +2,7 @@ from PySide6.QtWidgets import (
     QPushButton,
     QGraphicsDropShadowEffect,
 )
-
+from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor
 
 
@@ -11,8 +11,7 @@ class AnimatedButton(QPushButton):
     def __init__(self, text):
         super().__init__(text)
 
-        self.setFixedSize(320, 60)
-
+        self.setMinimumHeight(50)
         self.setStyleSheet("""
             QPushButton {
                 background-color: #F8B4C6;
@@ -47,3 +46,4 @@ class AnimatedButton(QPushButton):
         )
 
         self.setGraphicsEffect(shadow)
+        self.setCursor(Qt.CursorShape.PointingHandCursor)

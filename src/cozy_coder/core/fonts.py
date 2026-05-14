@@ -3,7 +3,7 @@ from PySide6.QtGui import QFontDatabase
 
 def load_fonts():
     QFontDatabase.addApplicationFont(
-        "assets/fonts/Quicksand-Regular.ttf"
+        "assets/fonts/Quicksand-Bold.ttf"
     )
 
     QFontDatabase.addApplicationFont(
