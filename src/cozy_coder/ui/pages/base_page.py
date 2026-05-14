@@ -1,4 +1,5 @@
 from PySide6.QtCore import Qt
+
 from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
@@ -11,7 +12,16 @@ class BasePage(QWidget):
     def __init__(self, title: str):
         super().__init__()
 
-        layout = QVBoxLayout(self)
+        self.page_layout = QVBoxLayout(self)
+
+        self.page_layout.setContentsMargins(
+            50,
+            40,
+            50,
+            40
+        )
+
+        self.page_layout.setSpacing(24)
 
         title_label = QLabel(title)
 
@@ -27,4 +37,4 @@ class BasePage(QWidget):
             margin-bottom: 20px;
         """)
 
-        layout.addWidget(title_label)
+        self.page_layout.addWidget(title_label)
